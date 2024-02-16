@@ -22,11 +22,18 @@ Installation guide to run the project remotely.
   $ pip install -r requirements.txt
   $ python manage.py runserver
 ```
+
 The project will require a SECRET_KEY value. To create one, you can use the command shown below:
+
 ```(bash)
 
   $ python -c "import secrets; print(secrets.token_hex(32))"
 
+```
+
+Copy the value printed on your terminal, and create a `.env` file in src folder. Type the following variable in the .env file
+```(env)
+  SECRET_KEY=<your-generated-secret-key>
 ```
 
 ## Contributor expectations
