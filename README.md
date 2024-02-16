@@ -20,6 +20,13 @@ Installation guide to run the project remotely.
   $ python3 -m venv .dsc-uchaguzi-venv
   $ source .dsc-uchaguzi-venv/bin/activate
   $ pip install -r requirements.txt
+  $ python manage.py runserver
+```
+The project will require a SECRET_KEY value. To create one, you can use the command shown below:
+```(bash)
+
+  $ python -c "import secrets; print(secrets.token_hex(32))"
+
 ```
 
 ## Contributor expectations
