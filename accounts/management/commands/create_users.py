@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from .models import User
+from accounts.models import User
 
 class Command(BaseCommand):
     help = 'Create users in the User model'

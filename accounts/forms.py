@@ -5,3 +5,9 @@ class UserLoginForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ['username', 'password']
+
+
+class ProfileForm(AuthenticationForm):
+    class Meta:
+        model = User
+        fields = '__all__'

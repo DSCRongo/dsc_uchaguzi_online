@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth
-from .forms import UserLoginForm
+from django.contrib import messages
+from .forms import UserLoginForm, ProfileForm
 from .models import User
 
-# Create your views here.
 
 def LogIn(request):
     form = UserLoginForm()
@@ -20,5 +20,29 @@ def LogIn(request):
     context = {'form':form}
     return render(request, 'accounts/login.html', context)
 
+
 def Home(request):
     return render(request, 'accounts/home.html')
+
+
+def profileView(request):
+    profile_form = ProfileForm()
+
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST, request.FILES, instance=request.user)
+
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.info(request, 'Account updated')
+            return redirect('user_account')
+
+    context = {'form':profile_form}
+    return render(request, 'accounts/profile.html', context)
+
+
+def Logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.info(request, 'Logged Out')
+        return redirect('login')
+    return render(request, 'accounts/logout.html')
