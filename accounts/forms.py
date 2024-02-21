@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import AuthenticationForm
+from django import forms
 from .models import User
 
 class UserLoginForm(AuthenticationForm):
@@ -7,7 +8,7 @@ class UserLoginForm(AuthenticationForm):
         fields = ['username', 'password']
 
 
-class ProfileForm(AuthenticationForm):
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['email', 'gender', 'mobile_no', 'dob', 'age', 'profile_pic']

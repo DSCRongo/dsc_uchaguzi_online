@@ -26,7 +26,7 @@ def Home(request):
 
 
 def profileView(request):
-    profile_form = ProfileForm()
+    profile_form = ProfileForm(instance=request.user)
 
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST, request.FILES, instance=request.user)
