@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth
 from django.contrib import messages
 from .forms import UserLoginForm, ProfileForm
+from django.contrib.auth.decorators import login_required
 from .models import User
 
 
@@ -21,10 +22,12 @@ def LogIn(request):
     return render(request, 'accounts/login.html', context)
 
 
+@login_required(login_url='login')
 def Home(request):
     return render(request, 'accounts/home.html')
 
 
+@login_required(login_url='login')
 def profileView(request):
     profile_form = ProfileForm(instance=request.user)
 
@@ -39,7 +42,7 @@ def profileView(request):
     context = {'form':profile_form}
     return render(request, 'accounts/profile.html', context)
 
-
+@login_required(login_url='login')
 def Logout(request):
     if request.method == 'POST':
         auth.logout(request)
