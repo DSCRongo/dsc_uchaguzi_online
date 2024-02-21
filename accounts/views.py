@@ -19,3 +19,6 @@ def LogIn(request):
                 return redirect('home')
     context = {'form':form}
     return render(request, 'accounts/login.html', context)
+
+def Home(request):
+    return render(request, 'accounts/home.html')
