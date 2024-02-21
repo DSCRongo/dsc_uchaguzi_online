@@ -34,7 +34,7 @@ def profileView(request):
         if profile_form.is_valid():
             profile_form.save()
             messages.info(request, 'Account updated')
-            return redirect('user_account')
+            return redirect('user_profile')
 
     context = {'form':profile_form}
     return render(request, 'accounts/profile.html', context)
