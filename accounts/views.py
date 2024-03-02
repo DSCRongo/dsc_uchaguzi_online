@@ -3,16 +3,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
-from .models import User
 
 
 class UsersLoginView(LoginView):
     template_name = 'accounts/login.html'
-
-
-@login_required(login_url='login')
-def Home(request):
-    return render(request, 'accounts/home.html')
 
 
 @login_required(login_url='login')
