@@ -30,10 +30,6 @@ def profileView(request):
     context = {'form':profile_form}
     return render(request, 'accounts/profile.html', context)
 
-@login_required(login_url='login')
-def Logout(request):
-    if request.method == 'POST':
-        auth.logout(request)
-        messages.info(request, 'Logged Out')
-        return redirect('login')
-    return render(request, 'accounts/logout.html')
+
+class LogoutUsersView(LogoutView):
+    template_name = 'accounts/login.html'
