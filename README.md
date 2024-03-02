@@ -42,7 +42,7 @@ Contribution guidelines for fixing bugs or assist in project development.
 1. Create a new git branch using command
     ```(bash)
     
-     $ git checkout -b <name-of-your-branch
+     $ git checkout -b <name-of-your-branch>
     
      ```
     **NOTE:** To avoid merging conflicts, please check that the name of your branch does not exist in this GitHub repo. For example, if you wish to create a branch named `feature` confirm that the name of the branch does not exist.
