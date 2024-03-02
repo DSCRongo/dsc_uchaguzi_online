@@ -1,25 +1,13 @@
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import auth
 from django.contrib import messages
-from .forms import UserLoginForm, ProfileForm
+from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
 from .models import User
 
 
-def LogIn(request):
-    form = UserLoginForm()
-    if request.method == 'POST':
-        form = UserLoginForm(data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-
-            user_details = auth.authenticate(username=username, password=password)
-            if user_details is not None:
-                auth.login(request, user_details)
-                return redirect('home')
-    context = {'form':form}
-    return render(request, 'accounts/login.html', context)
+class UsersLoginView(LoginView):
+    template_name = 'accounts/login.html'
 
 
 @login_required(login_url='login')
