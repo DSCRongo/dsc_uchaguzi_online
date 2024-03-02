@@ -24,6 +24,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
+    'core.apps.CoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,7 +33,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'accounts',
     'phonenumber_field',
 ]
 
@@ -141,3 +142,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'contactrongoshops@gmail.com'
 EMAIL_HOST_PASSWORD = 'qmzbskujimhmbpzh'
 EMAIL_USE_SSL = False
+
+LOGIN_REDIRECT_URL = 'homepage'
+LOGOUT_REDIRECT_URL = 'logout'
+
