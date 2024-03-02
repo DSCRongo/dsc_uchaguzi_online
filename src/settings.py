@@ -144,5 +144,4 @@ EMAIL_HOST_PASSWORD = 'qmzbskujimhmbpzh'
 EMAIL_USE_SSL = False
 
 LOGIN_REDIRECT_URL = 'homepage'
-LOGOUT_REDIRECT_URL = 'logout'
-
+LOGOUT_REDIRECT_URL = 'login'
