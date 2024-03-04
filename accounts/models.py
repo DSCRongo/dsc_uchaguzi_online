@@ -16,7 +16,7 @@ class User(AbstractUser):
     mobile_no = PhoneNumberField(blank=False)
     dob = models.DateField(null=True)
     age = models.PositiveIntegerField(default=0)
-    profile_pic = models.ImageField(upload_to=user_path_directory, default='default.jpg')
+    profile_pic = models.ImageField(upload_to=user_path_directory, default='default.png')
     date_updated = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = "email"
