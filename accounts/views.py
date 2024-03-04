@@ -1,12 +1,41 @@
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ProfileForm
-from django.contrib.auth.decorators import login_required
+from django.views import View
+from .forms import ProfileForm, VoterRegistrationForm
 
 
 class UsersLoginView(LoginView):
     template_name = 'accounts/login.html'
+
+
+class VoterRegistrationView(View):
+    form_class = VoterRegistrationForm
+    template_name = 'accounts/register.html'
+
+    
+    def get(self, request, *args, **kwargs):
+        form = VoterRegistrationForm()
+
+        context = {'VoterRegistrationForm': form}
+        return render(request, self.template_name, context)
+    
+
+    def post(self, request, *args, **kwargs):
+        form = VoterRegistrationForm(request.POST)
+
+        if form.is_valid():
+            register_voter = form.save(commit=False)
+            register_voter.voters_name = request.user
+            register_voter.is_registered = True
+            register_voter.save()
+
+            messages.success(request, 'Voter details submitted successfully!')
+            return redirect('voter_registration')
+
+        context = {'VoterRegistrationForm': form}
+        return render(request, self.template_name, context)
 
 
 @login_required(login_url='login')
