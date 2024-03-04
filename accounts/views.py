@@ -1,5 +1,6 @@
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views import View
@@ -10,6 +11,8 @@ class UsersLoginView(LoginView):
     template_name = 'accounts/login.html'
 
 
+@method_decorator(login_required(login_url='login'), name='get')
+@method_decorator(user_passes_test(lambda user: user.voter.is_registered is False), name='get')
 class VoterRegistrationView(View):
     form_class = VoterRegistrationForm
     template_name = 'accounts/register.html'
@@ -32,7 +35,7 @@ class VoterRegistrationView(View):
             register_voter.save()
 
             messages.success(request, 'Voter details submitted successfully!')
-            return redirect('voter_registration')
+            return redirect('homepage')
 
         context = {'VoterRegistrationForm': form}
         return render(request, self.template_name, context)
