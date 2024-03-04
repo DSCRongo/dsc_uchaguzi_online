@@ -1,4 +1,4 @@
-from accounts.models import User
+from accounts.models import User, Voter
 from django.db import models
 from PIL import Image
 
