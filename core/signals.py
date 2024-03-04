@@ -1,13 +1,7 @@
-from .models import Voter, Aspirant, VotingRecord
+from .models import Aspirant, VotingRecord
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 import uuid
-
-
-@receiver(pre_save, sender=Voter)
-def generate_voterID(sender, instance, **kwargs):
-    if instance.id == '':
-        instance.id = str(uuid.uuid4().hex)[:25]
 
 
 @receiver(pre_save, sender=Aspirant)
