@@ -45,8 +45,8 @@ class User(AbstractUser):
 class Voter(models.Model):
     id = models.CharField(max_length=25, primary_key=True, unique=True, editable=False)
     voters_name = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
-    reg_no = models.CharField(max_length=20, blank=False)
-    school = models.CharField(max_length=10, blank=False)
+    reg_no = models.CharField(max_length=20, unique=True, blank=False)
+    school = models.CharField(max_length=70, blank=False)
     year = models.CharField(max_length=12, blank=False)
     semester = models.CharField(max_length=1, blank=False)
     is_registered = models.BooleanField(default=False, editable=False)
