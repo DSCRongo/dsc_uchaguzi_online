@@ -1,6 +1,7 @@
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from PIL import Image
 
 
 def user_path_directory(instance, filename):
@@ -28,3 +29,15 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+
+    def save(self, *args, **kwargs):
+        super(User, self).save(*args, **kwargs)
+
+        dp = Image.open(self.profile_pic.path)
+
+        if dp.height > 400 and dp.width > 400:
+            output_size = (480, 480)
+            dp.thumbnail(output_size)
+            dp.save(self.profile_pic.path)
+    
