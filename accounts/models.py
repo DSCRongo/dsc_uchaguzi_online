@@ -11,10 +11,10 @@ def user_path_directory(instance, filename):
 
 class User(AbstractUser):
     id = models.CharField(max_length=25, primary_key=True, unique=True, editable=False)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, blank=False)
     gender = models.CharField(max_length=7, blank=False)
     mobile_no = PhoneNumberField(blank=False)
-    dob = models.DateField(null=True)
+    dob = models.DateField(null=True, blank=False)
     age = models.PositiveIntegerField(default=0)
     profile_pic = models.ImageField(upload_to=user_path_directory, default='default.png')
     date_updated = models.DateTimeField(auto_now=True)
