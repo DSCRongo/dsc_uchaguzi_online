@@ -8,26 +8,6 @@ def user_path_directory(instance, filename):
     return 'aspirant_{}/dps/{}'.format(str(instance.post.username)[:5], filename)
 
 
-class Voter(models.Model):
-    id = models.CharField(max_length=25, primary_key=True, unique=True, editable=False)
-    voters_name = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
-    reg_no = models.CharField(max_length=20, blank=False)
-    school = models.CharField(max_length=10, blank=False)
-    year = models.CharField(max_length=12, blank=False)
-    semester = models.CharField(max_length=1, blank=False)
-    is_registered = models.BooleanField(default=False, editable=False)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-
-
-    class Meta:
-        ordering = ['voters_name']
-    
-
-    def __str__(self):
-        return f'{self.voters_name}'
-
-
 class Aspirant(models.Model):
     id = models.CharField(max_length=25, primary_key=True, unique=True, editable=False)
     name = models.OneToOneField(Voter, on_delete=models.CASCADE, editable=False)
