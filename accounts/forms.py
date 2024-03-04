@@ -73,6 +73,7 @@ class ProfileForm(forms.ModelForm):
         validators=[is_image_file],
     )
 
+
     class Meta:
         model = User
         fields = ['email', 'gender', 'dob', 'mobile_no', 'profile_pic']
