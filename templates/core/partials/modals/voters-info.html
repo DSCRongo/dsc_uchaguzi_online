@@ -1,0 +1,48 @@
+{% load static %}
+<div class="modal fade" id="modal-registration-status" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-check-circle-fill" style="color: #13bb46"></i> Voter registration form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-2">
+                    <div class="col-md-12 table-responsive text-center">
+                        <img src="{% static 'img/thumbs-up.png' %}" alt="img" class="rounded-circle mb-2" style="border: 2px solid blueviolet" height="120px" width="120px">
+                        <h5>You are a registered voter</h5>
+                        <table class="table table-sm table-condensed table-bordered table-striped table-hover">
+                            <thead>
+                                <tr class="text-center table-success">
+                                    <th>#</th>
+                                    <th>Voters Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Name: </td><td class="text-center">{{ request.user.voter.voters_name|title }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Gender: </td><td class="text-center">{{ request.user.gender|default:"--" }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Registration No.: </td><td class="text-center">{{ request.user.voter.reg_no }}</td>
+                                </tr>
+                                <tr>
+                                    <td>School: </td><td class="text-center">{{ request.user.voter.school }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Year: </td><td class="text-center">{{ request.user.voter.year }}</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="small text-center text-muted fw-bold">NB: Kindly verify that the details provided in this form are correct and valid.</p>
+            </div>
+        </div>
+    </div>
+</div>
