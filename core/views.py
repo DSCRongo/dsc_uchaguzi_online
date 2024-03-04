@@ -13,6 +13,6 @@ class HomepageView(View):
     def get(self, request, *args, **kwargs):
 
         context = {}
-        return redirect(request, self.template_name, context)
+        return render(request, self.template_name, context)
     
 
