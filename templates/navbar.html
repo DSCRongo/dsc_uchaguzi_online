@@ -90,12 +90,12 @@
                     <li class="nav-item dropdown pe-3">
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="" data-bs-toggle="dropdown">
                             <img src="{{ request.user.profile_pic.url }}" alt="Profile" class="rounded-circle">
-                            <span class="d-none d-md-block dropdown-toggle ps-2">{{request.user.username|title}}</span>
+                            <span class="d-none d-md-block dropdown-toggle ps-2">{{ request.user.username }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
-                                <h6>{{request.user.voters_name.year|title|default:"Not registered"}}</h6>
-                                <span>{{ request.user.voters_name.school|default:"Be a registered voter today" }}</span>
+                                <h6>{{ request.user.voter.year|title|default:"Not registered" }}</h6>
+                                <span>{{ request.user.voter.school|default:"Be a registered voter today" }}</span>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
