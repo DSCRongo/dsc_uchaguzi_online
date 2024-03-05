@@ -50,6 +50,7 @@ class Voter(models.Model):
     year = models.CharField(max_length=12, blank=False)
     semester = models.CharField(max_length=1, blank=False)
     is_registered = models.BooleanField(default=False, editable=False)
+    has_voted = models.BooleanField(default=False, editable=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
