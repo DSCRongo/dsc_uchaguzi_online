@@ -1,0 +1,89 @@
+{% load static %}
+		<div class="col-lg-8">
+			<div class="row">
+				{% include 'core/partials/modals/voters-info.html' %}			
+				<div class="col-xxl-4 col-md-6">
+					<div class="card info-card aspirants-card">
+						<div class="card-body">
+							<h5 class="card-title">Aspirants</h5>
+
+							<div class="d-flex align-items-center">
+								<div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+									<i class="bi bi-trophy-fill"></i>
+								</div>
+								<div class="ps-3">
+									<h6>{{ aspirants.count|default:0 }}</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xxl-4 col-md-6">
+					<div class="card info-card voters-card">
+
+						<div class="card-body">
+							<h5 class="card-title">Voters</h5>
+							<div class="d-flex align-items-center">
+								<div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+								<i class="bi bi-people-fill"></i>
+								</div>
+								<div class="ps-3">
+									<h6>{{ TotalVoters|default:0 }}</h6>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-12">
+					<div class="card overflow-auto">
+						<div class="card-body pb-0">
+							<h5 class="card-title"><i class="bi bi-trophy-fill"></i> Aspirants</h5>
+							
+							<div class="table-responsive">
+								<table class="table table-sm table-bordered table-condensed table-striped">
+									<thead>
+										<tr class="text-center table-active py-1">
+											<th scope="col">Image</th>
+											<th scope="col">Name</th>
+											<th scope="col">Gender</th>
+											<th scope="col">Post</th>
+											<th scope="col">Total Votes</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for aspirant in aspirants %}
+										<tr class="text-center">
+											<td><img src="{{ aspirant.aspirant_dp.url }}" alt="image" class="rounded-circle" height="45px" width="45px"></td>
+											<td>{{ aspirant.name }}</td>
+											<td>{{ aspirant.name.voters_name.gender|default:"--" }}</td>
+											<td>{{ aspirant.post }}</td>
+											<td class="fw-bold text-muted">{{ aspirant.total_votes }}</td>
+										</tr>
+										{% empty %}
+										<tr class="text-center small">
+											<td colspan="5">No data available</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="card">
+				<div class="card-body pb-2">
+					<h5 class="card-title">Registered Voters</h5>
+					<input type="hidden" id="males" value="{{ MaleRegisteredVoters }}">
+					<input type="hidden" id="females" value="{{ FemaleRegisteredVoters }}">
+					<canvas id="votersChart" class="mb-3" style="max-height: 400px;"></canvas>
+					<script type="text/javascript" src="{% static 'js/charts/doughnut.js' %}"></script>
+				</div>
+			</div>
+		</div>
