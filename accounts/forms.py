@@ -7,10 +7,10 @@ from .utils import is_image_file
 class VoterRegistrationForm(forms.ModelForm):
     SELECT_SCHOOL = (
         (None, '-- Select your school --'),
-        ('School of Arts, Social Sciences and Business', 'School of Arts, Social Sciences and Business (SASSB)'),
-        ('School of Education', 'School of Education (SE)'),
-        ('School of Information, Communication & Media Studies', 'School of Information, Communication & Media Studies (INFOCOMS)'),
-        ('School of Science, Agriculture & Environmental Science', 'School of Science, Agriculture & Environmental Science (SSAES)'),
+        ('SASSB', 'School of Arts, Social Sciences and Business (SASSB)'),
+        ('SoE', 'School of Education (SE)'),
+        ('INFOCOMS', 'School of Information, Communication & Media Studies (INFOCOMS)'),
+        ('SSAES', 'School of Science, Agriculture & Environmental Science (SSAES)'),
     )
     SELECT_YEAR = (
         (None, '-- Select year of study --'),
