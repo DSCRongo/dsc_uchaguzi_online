@@ -10,10 +10,10 @@ def user_path_directory(instance, filename):
 
 class Aspirant(models.Model):
     id = models.CharField(max_length=25, primary_key=True, unique=True, editable=False)
-    name = models.OneToOneField(Voter, on_delete=models.CASCADE, editable=False)
+    name = models.OneToOneField(Voter, on_delete=models.CASCADE)
     post = models.CharField(max_length=30, blank=False)
     total_votes = models.PositiveIntegerField(default=0, editable=False)
-    aspirant_dp = models.ImageField()
+    aspirant_dp = models.ImageField(upload_to=user_path_directory, null=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
