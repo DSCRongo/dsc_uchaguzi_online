@@ -6,16 +6,47 @@ from django.utils import timezone
 from django.views import View
 from .models import Aspirant, VotingRecord
 from accounts.models import Voter
+from accounts.forms import VoterRegistrationForm
 
 
 @method_decorator(login_required(login_url='login'), name='get')
 class HomepageView(View):
+    form_class = VoterRegistrationForm
     template_name = 'core/homepage.html'
 
 
     def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        current_year = timezone.datetime.now().year
+        total_voters = Voter.objects.count()
+        aspirants = Aspirant.objects.filter(date_created__year=current_year)
+        registered_voters_male = Voter.objects.filter(voters_name__gender='Male').count()   # Males
+        registered_voters_female = Voter.objects.filter(voters_name__gender='Female').count()    # Females
+        
 
-        context = {}
+        context = {
+            'VoterRegistrationForm': form,
+            'TotalVoters': total_voters,
+            'aspirants': aspirants,
+            'MaleRegisteredVoters': registered_voters_male,
+            'FemaleRegisteredVoters': registered_voters_female,
+        }
+        return render(request, self.template_name, context)
+    
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            register_voter = form.save(commit=False)
+            register_voter.voters_name = request.user
+            register_voter.is_registered = True
+            register_voter.save()
+
+            messages.success(request, 'Voter details submitted successfully!')
+            return redirect('homepage')
+
+        context = {'VoterRegistrationForm': form}
         return render(request, self.template_name, context)
     
 
