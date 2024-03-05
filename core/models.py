@@ -5,7 +5,7 @@ from PIL import Image
 
 def user_path_directory(instance, filename):
     """ media path is in the format MEDIA_ROOT/user_{username}/profile-pics/{filename}. """
-    return 'aspirant_{}/dps/{}'.format(str(instance.post.username)[:5], filename)
+    return 'aspirant_{}/dps/{}'.format(str(instance.post.username), filename)
 
 
 class Aspirant(models.Model):
