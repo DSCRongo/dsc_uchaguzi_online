@@ -134,12 +134,12 @@
 
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
-                {% if request.user.voter.is_registered is True %}
                 <li class="nav-item">
                     <a class="nav-link" hx-get="{% url 'homepage' %}" hx-trigger="click"  hx-push-url="{% url 'homepage' %}" hx-swap="outerHTML" hx-target="#wrapper">
                         <i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span>
                     </a>
                 </li>
+                {% if request.user.voter.is_registered is True %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'homepage' %}" data-bs-toggle="modal" data-bs-target="#modal-registration-status">
                         <i class="bi bi-person-fill-check"></i><span>Registration Status</span>
