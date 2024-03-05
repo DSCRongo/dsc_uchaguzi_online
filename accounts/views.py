@@ -12,7 +12,6 @@ class UsersLoginView(LoginView):
 
 
 @method_decorator(login_required(login_url='login'), name='get')
-@method_decorator(user_passes_test(lambda user: user.voter.is_registered is False), name='get')
 class VoterRegistrationView(View):
     form_class = VoterRegistrationForm
     template_name = 'accounts/register.html'
