@@ -5,7 +5,7 @@ from PIL import Image
 
 def user_path_directory(instance, filename):
     """ media path is in the format MEDIA_ROOT/user_{username}/profile-pics/{filename}. """
-    return 'aspirant_{}/dps/{}'.format(str(instance.post.username), filename)
+    return 'aspirant_{}/dps/{}'.format(str(instance.name), filename)
 
 
 class Aspirant(models.Model):
@@ -28,10 +28,10 @@ class Aspirant(models.Model):
 
     def save(self, *args, **kwargs):
         super(Aspirant, self).save(*args, **kwargs)
-
         dp = Image.open(self.aspirant_dp.path)
-        if dp.height > 400 and dp.width > 400:
-            output_size = (480, 480)
+
+        if dp.height > 120 and dp.width > 120:
+            output_size = (320, 320)
             dp.thumbnail(output_size)
             dp.save(self.aspirant_dp.path)
     
