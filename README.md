@@ -2,6 +2,8 @@
 
 
 # Overview
+![Screenshot from 2024-03-06 12-42-12](https://github.com/DSCRongo/dsc_uchaguzi_online/assets/78599959/5004c103-5bc4-4185-beda-38a94e8df25a)
+
 This is a website created to conduct annual elections in Google Developers Students Club (GDSC) Rongo University.
 
 ## Tech stack
