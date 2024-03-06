@@ -8,7 +8,7 @@ This is a website created to conduct annual elections in Google Developers Stude
 Python team will be developing the website by utilizing the following technologies
 - HTML
 - CSS
-- JavaScript
+- Javascript
 - htmx
 - Django
 

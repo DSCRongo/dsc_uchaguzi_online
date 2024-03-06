@@ -1,0 +1,23 @@
+
+{% load crispy_forms_tags %}
+		<div class="col-lg-6 offset-sm-3">
+			<div class="card mb-3">
+				<div class="card-body">
+					<div class="pt-4 pb-2">
+						<h5 class="card-title text-center pb-0 fs-4">Voter registration form</h5>
+					</div>
+					<form action="" method="post" class="p-3">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-12">
+								{{ VoterRegistrationForm|crispy }}
+							</div>
+						</div>
+						<div class="col-12 mt-3">
+							<button class="btn btn-outline-success w-100 mb-2" type="submit">Register</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>

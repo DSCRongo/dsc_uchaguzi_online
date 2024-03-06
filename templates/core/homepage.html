@@ -1,0 +1,16 @@
+{% extends 'navbar.html' %}{% block title %}Homepage{% endblock %}
+{% load crispy_forms_tags %}{% load static %}
+	{% block content %}
+	<main id="main" class="main">
+		<section class="section dashboard">
+			<div class="row">
+				{% include 'toasts.html' %}
+				{% if request.user.voter.is_registered is True %}
+				{% include 'core/partials/dashboard.html' %}
+				{% else %}
+				{% include 'core/partials/register.html' %}
+				{% endif %}
+			</div>
+		</section>
+	</main>
+	{% endblock %}
