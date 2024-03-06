@@ -20,16 +20,16 @@ class HomepageView(View):
         current_year = timezone.datetime.now().year
         total_voters = Voter.objects.count()
         aspirants = Aspirant.objects.filter(date_created__year=current_year)
-        registered_voters_male = Voter.objects.filter(voters_name__gender='Male').count()   # Males
-        registered_voters_female = Voter.objects.filter(voters_name__gender='Female').count()    # Females
+        male_registered_voters = Voter.objects.filter(voters_name__gender='Male').count()   # Males
+        female_registered_voters = Voter.objects.filter(voters_name__gender='Female').count()    # Females
         
 
         context = {
             'VoterRegistrationForm': form,
             'TotalVoters': total_voters,
             'aspirants': aspirants,
-            'MaleRegisteredVoters': registered_voters_male,
-            'FemaleRegisteredVoters': registered_voters_female,
+            'MaleRegisteredVoters': male_registered_voters,
+            'FemaleRegisteredVoters': female_registered_voters,
         }
         return render(request, self.template_name, context)
     

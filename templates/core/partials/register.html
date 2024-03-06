@@ -1,5 +1,4 @@
-
-{% load crispy_forms_tags %}
+{% load widget_tweaks %}
 		<div class="col-lg-6 offset-sm-3">
 			<div class="card mb-3">
 				<div class="card-body">
@@ -10,7 +9,16 @@
 						{% csrf_token %}
 						<div class="row">
 							<div class="col-12">
-								{{ VoterRegistrationForm|crispy }}
+								<label>{{ VoterRegistrationForm.reg_no.label_tag }}&ast;</label>
+								{% render_field VoterRegistrationForm.reg_no class="form-control" hx-post="/accounts/validate/registration-number/" hx-swap="outerhtml" hx-trigger="keyup delay:.5s" hx-target="#registration-num-error" %}
+								<div id="registration-num-error" class="mt-1"></div>
+								<label>{{ VoterRegistrationForm.school.label_tag }}&ast;</label>
+								{% render_field VoterRegistrationForm.school class="form-control" %}
+								<label>{{ VoterRegistrationForm.year.label_tag }}&ast;</label>
+								{% render_field VoterRegistrationForm.year class="form-control" %}
+								<label>{{ VoterRegistrationForm.semester.label_tag }}&ast;</label>
+								{% render_field VoterRegistrationForm.semester class="form-control" %}
+								
 							</div>
 						</div>
 						<div class="col-12 mt-3">

@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import validators
 
 
 urlpatterns =[
@@ -8,3 +9,9 @@ urlpatterns =[
     path('logout/', views.LogoutUsersView.as_view(), name='logout'),
 
 ]
+
+htmx_urlpatterns = [
+    path('validate/registration-number/', validators.check_registration_number_exists, name='validate_registration_num'),
+]
+
+urlpatterns += htmx_urlpatterns

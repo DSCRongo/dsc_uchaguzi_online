@@ -7,3 +7,4 @@ urlpatterns = [
     path('<str:voter_id>/vote/', views.VotingView.as_view(), name='cast_vote'),
     
 ]
+
