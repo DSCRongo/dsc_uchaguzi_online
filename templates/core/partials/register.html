@@ -10,7 +10,7 @@
 						<div class="row">
 							<div class="col-12">
 								<label>{{ VoterRegistrationForm.reg_no.label_tag }}&ast;</label>
-								{% render_field VoterRegistrationForm.reg_no class="form-control" hx-post="/accounts/validate-registration-number/" hx-swap="outerhtml" hx-trigger="keyup delay:.5s" hx-target="#registration-num-error" %}
+								{% render_field VoterRegistrationForm.reg_no class="form-control" hx-post="/accounts/validate/registration-number/" hx-swap="outerhtml" hx-trigger="keyup delay:.5s" hx-target="#registration-num-error" %}
 								<div id="registration-num-error" class="mt-1"></div>
 								<label>{{ VoterRegistrationForm.school.label_tag }}&ast;</label>
 								{% render_field VoterRegistrationForm.school class="form-control" %}
