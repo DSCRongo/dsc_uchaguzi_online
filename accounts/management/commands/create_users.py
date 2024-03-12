@@ -24,11 +24,11 @@ class Command(BaseCommand):
                 continue    # continue saving other user credentials.
 
             # Send welcome email to the user
-            self.send_welcome_email(user)
+            self.send_welcome_email(user, user_data["password"])
         self.stdout.write(self.style.SUCCESS('User accounts created successfully!'))
     
 
-    def send_welcome_email(self, user):
+    def send_welcome_email(self, user, password):
         subject = 'Welcome to DSC uchaguzi online'
         from_email = settings.EMAIL_HOST_USER
         to_email = user.email
@@ -38,7 +38,7 @@ class Command(BaseCommand):
 
         Your login credentials:
         Email: {user.email}
-        Password: {user["password"]}
+        Password: {password}
 
         If you have any questions or need assistance, feel free to contact us.
 
