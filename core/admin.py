@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Aspirant, VotingRecord
+from .models import Aspirant, VotingRecord, ElectionsDate
 
 
 @admin.register(Aspirant)
@@ -10,3 +10,8 @@ class AspirantsTable(admin.ModelAdmin):
 @admin.register(VotingRecord)
 class CastedVotesTable(admin.ModelAdmin):
     list_display = ['voter', 'elected_post']
+
+
+@admin.register(ElectionsDate)
+class CastedVotesTable(admin.ModelAdmin):
+    list_display = ['election_date', 'is_done']

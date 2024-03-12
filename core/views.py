@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.utils import timezone
 from django.views import View
-from .models import Aspirant, VotingRecord
+from .models import Aspirant, VotingRecord, ElectionsDate
 from accounts.models import Voter
 from accounts.forms import VoterRegistrationForm
 
@@ -22,7 +22,7 @@ class HomepageView(View):
         aspirants = Aspirant.objects.filter(date_created__year=current_year)
         male_registered_voters = Voter.objects.filter(voters_name__gender='Male').count()   # Males
         female_registered_voters = Voter.objects.filter(voters_name__gender='Female').count()    # Females
-        
+        get_elections_date = ElectionsDate.objects.filter(date_created__year=current_year).first()
 
         context = {
             'VoterRegistrationForm': form,
@@ -30,6 +30,7 @@ class HomepageView(View):
             'aspirants': aspirants,
             'MaleRegisteredVoters': male_registered_voters,
             'FemaleRegisteredVoters': female_registered_voters,
+            'elections_date': get_elections_date,
         }
         return render(request, self.template_name, context)
     

@@ -1,10 +1,16 @@
 asgiref==3.7.2
+dj-database-url==2.1.0
 Django==5.0.2
 django-crispy-forms==1.14.0
 django-environ==0.11.2
+django-phonenumber-field==7.3.0
+django-widget-tweaks==1.5.0
 gunicorn==21.2.0
 packaging==23.2
+phonenumberslite==8.13.31
 pillow==10.2.0
+psycopg2-binary==2.9.9
 python-magic==0.4.27
 sqlparse==0.4.4
+typing_extensions==4.10.0
 whitenoise==6.6.0
