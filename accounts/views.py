@@ -16,16 +16,24 @@ class UsersLoginView(LoginView):
 @login_required(login_url='login')
 def profileView(request):
     profile_form = ProfileForm(instance=request.user)
+    password_change_form = PasswordChangeForm(request.user)
 
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST, request.FILES, instance=request.user)
+        password_change_form = PasswordChangeForm(request.user, data=request.POST)
 
         if profile_form.is_valid():
             profile_form.save()
             messages.info(request, 'Account updated')
             return redirect('user_profile')
+        
+        if password_change_form.is_valid():
+            user = password_change_form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('user_profile')
 
-    context = {'form':profile_form}
+    context = {'form':profile_form, 'ChangePasswordForm': password_change_form}
     return render(request, 'accounts/profile.html', context)
 
 
