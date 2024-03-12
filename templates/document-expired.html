@@ -18,6 +18,7 @@
     {% block content %}
     <script>
         window.location.replace("{% url 'document_expired' %}");
+        window.history.forward(1);
     </script>
     {% endblock %}
 </body>
