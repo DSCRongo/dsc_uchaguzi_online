@@ -34,11 +34,11 @@ class Command(BaseCommand):
         to_email = user.email
         message = f'''
         {user.first_name} {user.last_name}
-        Welcome to DSC uchaguzi online
+        Welcome to GDSC uchaguzi online.
 
         Your login credentials:
         Email: {user.email}
-        Password: {user.password}
+        Password: {user["password"]}
 
         If you have any questions or need assistance, feel free to contact us.
 
