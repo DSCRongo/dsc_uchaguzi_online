@@ -1,3 +1,4 @@
+{% load filters %}
 {% load static %}
 		<div class="col-lg-8">
 			<div class="row">
@@ -55,6 +56,7 @@
 									</thead>
 									<tbody>
 										{% for aspirant in aspirants %}
+										{% if elections_date.election_date|current_datetime is True %}
 										<tr class="text-center">
 											<td><img src="{{ aspirant.aspirant_dp.url }}" alt="image" class="rounded-circle" height="45px" width="45px"></td>
 											<td>{{ aspirant.name }}</td>
@@ -62,6 +64,7 @@
 											<td>{{ aspirant.post }}</td>
 											<td class="fw-bold text-muted">{{ aspirant.total_votes }}</td>
 										</tr>
+										{% endif %}
 										{% empty %}
 										<tr class="text-center small">
 											<td colspan="5">No data available</td>
