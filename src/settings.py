@@ -1,5 +1,6 @@
 from django.contrib.messages import constants as messages
 from pathlib import Path
+import dj_database_url
 import environ
 
 
@@ -16,7 +17,7 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [env('WEB_DOMAIN')]
 
@@ -84,14 +85,7 @@ if DEBUG:
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': env('DB_NAME'),
-            'HOST': env('DB_HOST'),
-            'USER': env('DB_USER'),
-            'PASSWORD': env('DB_PASSWORD'),
-            'PORT': env('DB_PORT'),
-        }
+        'default': dj_database_url.parse(env('DB_URL')),
     }   
 
 
