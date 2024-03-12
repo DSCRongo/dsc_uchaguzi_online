@@ -5,6 +5,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.template import loader
 from django.views import View
 from .forms import ProfileForm, VoterRegistrationForm
 
@@ -39,3 +40,20 @@ def profileView(request):
 
 class LogoutUsersView(LogoutView):
     template_name = 'accounts/login.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+        
+        # Prevent caching of the page
+        response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response['Expires'] = '0'
+        
+        # Add JavaScript redirect to display "Document Expired" on back button press
+        template = loader.get_template('document-expired.html')
+        document_expired_script = template.render()
+        response.content = document_expired_script
+
+        return response
+    
+def document_expired_view(request):
+    return render(request, 'document-expired.html')
