@@ -65,6 +65,11 @@ class ProfileForm(forms.ModelForm):
         choices=SELECT_GENDER,
         disabled=True,
     )
+    mobile_no = forms.CharField(widget=forms.TextInput(attrs={
+            'type': 'tel', 'class': 'mb-0',
+        }),
+        help_text='Enter your phone number and include your country code, e.g. +254112345678'
+    )
     profile_pic = forms.FileField(
         widget=forms.FileInput(attrs={
             'type': 'file', 'class': 'form-control mb-2', 'accept': '.jpg, .jpeg, .png',
