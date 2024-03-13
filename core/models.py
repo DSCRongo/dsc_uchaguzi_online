@@ -26,16 +26,6 @@ class Aspirant(models.Model):
         return f'{self.name}'
     
 
-    def save(self, *args, **kwargs):
-        super(Aspirant, self).save(*args, **kwargs)
-        dp = Image.open(self.aspirant_dp.path)
-
-        if dp.height > 120 and dp.width > 120:
-            output_size = (320, 320)
-            dp.thumbnail(output_size)
-            dp.save(self.aspirant_dp.path)
-    
-
     def delete(self):
         self.aspirant_dp.delete()
         super(Aspirant, self).delete()

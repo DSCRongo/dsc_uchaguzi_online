@@ -29,17 +29,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
-
-
-    def save(self, *args, **kwargs):
-        super(User, self).save(*args, **kwargs)
-
-        dp = Image.open(self.profile_pic.path)
-
-        if dp.height > 400 and dp.width > 400:
-            output_size = (480, 480)
-            dp.thumbnail(output_size)
-            dp.save(self.profile_pic.path)
     
 
     def delete(self):
