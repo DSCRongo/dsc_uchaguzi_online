@@ -76,8 +76,7 @@ class VotingView(View):
 
             # save voters details in db
             voter_info, created = VotingRecord.objects.get_or_create(elected_post=get_aspirant, voter=request.user.voter)
-            voter_info
-
+            
             # update voter's record
             get_voter = Voter.objects.get(voters_name=request.user)
             get_voter.has_voted = True
