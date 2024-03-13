@@ -74,7 +74,7 @@
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" hx-get="{% url 'homepage' %}" hx-trigger="click"  hx-push-url="{% url 'homepage' %}" hx-swap="outerHTML" hx-target="#wrapper">
+                    <a class="nav-link" href="{% url 'homepage' %}">
                         <i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span>
                     </a>
                 </li>
