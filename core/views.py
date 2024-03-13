@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -10,6 +10,7 @@ from accounts.forms import VoterRegistrationForm
 
 
 @method_decorator(login_required(login_url='login'), name='get')
+@method_decorator(user_passes_test(lambda user: user.is_superuser is False and user.is_staff is False), name='get')
 class HomepageView(View):
     form_class = VoterRegistrationForm
     template_name = 'core/homepage.html'
@@ -52,6 +53,7 @@ class HomepageView(View):
     
 
 @method_decorator(login_required(login_url='login'), name='get')
+@method_decorator(user_passes_test(lambda user: user.is_superuser is False and user.is_staff is False), name='get')
 class VotingView(View):
     template_name = 'core/vote.html'
 
