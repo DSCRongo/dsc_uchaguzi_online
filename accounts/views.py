@@ -33,6 +33,15 @@ def profileView(request):
             update_session_auth_hash(request, user)
             messages.success(request, 'Your password was successfully updated!')
             return redirect('user_profile')
+        
+        else:
+            if password_change_form.error_messages["password_mismatch"] or password_change_form.error_messages["password_mismatch"]:
+                messages.error(request, f'{password_change_form.error_messages["password_mismatch"]}')
+                messages.error(request, f'{password_change_form.error_messages["password_incorrect"]}')
+            
+            messages.error(request, f'{password_change_form.errors}')
+
+            # return redirect('user_profile')
 
     context = {'form':profile_form, 'ChangePasswordForm': password_change_form}
     return render(request, 'accounts/profile.html', context)
