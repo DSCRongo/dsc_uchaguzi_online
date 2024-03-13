@@ -56,7 +56,7 @@
 									</thead>
 									<tbody>
 										{% for aspirant in aspirants %}
-										{% if elections_date.is_done is False %}
+										{% if elections_date.is_done is True %}
 										<tr class="text-center">
 											<td><img src="{{ aspirant.aspirant_dp.url }}" alt="image" class="rounded-circle" height="45px" width="45px"></td>
 											<td>{{ aspirant.name }}</td>
