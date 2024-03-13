@@ -36,6 +36,11 @@ class Aspirant(models.Model):
             dp.save(self.aspirant_dp.path)
     
 
+    def delete(self):
+        self.aspirant_dp.delete()
+        super(Aspirant, self).delete()
+    
+
 class VotingRecord(models.Model):
     id = models.CharField(max_length=25, primary_key=True, unique=True, editable=False)
     elected_post = models.ForeignKey(Aspirant, on_delete=models.CASCADE, editable=False)
