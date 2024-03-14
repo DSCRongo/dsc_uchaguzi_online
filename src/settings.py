@@ -28,6 +28,8 @@ ALLOWED_HOSTS = [env('WEB_DOMAIN')]
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
+    'survey.apps.SurveyConfig',
+    'results.apps.ResultsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
