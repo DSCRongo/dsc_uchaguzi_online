@@ -13,5 +13,5 @@ class CastedVotesTable(admin.ModelAdmin):
 
 
 @admin.register(ElectionsDate)
-class CastedVotesTable(admin.ModelAdmin):
+class ElectionsTable(admin.ModelAdmin):
     list_display = ['election_date', 'is_done']
