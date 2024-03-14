@@ -12,6 +12,30 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         users_data = [
             # Add user credentials here - use dictionary
+            {
+                'username': 'test.user',
+                'gender': 'Male',
+                'email': 'testuser@gmail.com',
+                'dob': '2000-01-01',
+                'mobile_no': '+254112345678',
+                'password': 'morikeli',
+            },
+            {
+                'username': 'brenda.jones',
+                'gender': 'Female',
+                'email': 'bjones@gmail.com',
+                'dob': '2000-01-01',
+                'mobile_no': '+254112345678',
+                'password': 'morikeli',
+            },
+            {
+                'username': 'sarah.jones',
+                'gender': 'Female',
+                'email': 'sarahj@gmail.com',
+                'dob': '2000-01-01',
+                'mobile_no': '+254112345678',
+                'password': 'morikeli',
+            },
         ]
 
         for user_data in users_data:
@@ -24,7 +48,7 @@ class Command(BaseCommand):
                 continue    # continue saving other user credentials.
 
             # Send welcome email to the user
-            self.send_welcome_email(user, user_data["password"])
+            # self.send_welcome_email(user, user_data["password"])
         self.stdout.write(self.style.SUCCESS('User accounts created successfully!'))
     
 
