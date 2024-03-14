@@ -1,5 +1,4 @@
-{% load static %}
-<!DOCTYPE html>
+{% load static %}<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -85,14 +84,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a hx-get="{% url 'cast_vote' request.user %}" hx-trigger="click"  hx-push-url="{% url 'cast_vote' request.user %}" hx-swap="outerHTML" hx-target="#wrapper" class="nav-link">
-                        <i class="bi bi-bar-chart-line-fill"></i><span>Vote</span>
+                    <a hx-get="{% url 'cast_vote' request.user %}" hx-trigger="click" hx-push-url="{% url 'cast_vote' request.user %}" hx-swap="outerHTML" hx-target="#wrapper" class="nav-link">
+                        <i class="bi bi-archive-fill"></i><span>Vote</span>
                     </a>
                 </li>
                 {% if request.user.voter.has_voted is True %}
                 <li class="nav-item">
                     <a hx-get="{% url 'feedback' %}" hx-trigger="click"  hx-push-url="{% url 'feedback' %}" hx-swap="outerHTML" hx-target="#wrapper" class="nav-link">
                         <i class="bi bi-mic-fill"></i><span>Feedback</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'election_results' request.user %}" class="nav-link">
+                        <i class="bi bi-bar-chart-line-fill"></i><span>Results</span>
                     </a>
                 </li>
                 {% endif %}
@@ -125,6 +129,7 @@
     <div id="preloader"></div>
     <a href="" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi-arrow-up-short"></i></a>
     <script src="{% static 'vendor/chart.js/chart.umd.js' %}"></script>
+    <script src="{% static 'vendor/echarts/echarts.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/toasts.js' %}"></script>
 </body>
