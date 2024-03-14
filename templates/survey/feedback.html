@@ -1,0 +1,36 @@
+{% extends 'navbar.html' %}{% block title %}Feedback{% endblock %}
+{% load crispy_forms_tags %}
+	{% block content %}
+	<main id="main" class="main">
+		<div class="container">
+			<section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-6">
+							<div class="card mb-3">
+								<div class="card-body">
+									<div class="pt-4 pb-2">
+										<h5 class="card-title text-center pb-0 fs-4"></h5>
+									</div>
+									<form action="" method="post" class="p-3">
+										{% csrf_token %}
+										<div class="row">
+											<div class="col-12">
+												{% include 'toasts.html' %}
+                                                {{ FeedbackForm|crispy }}
+											</div>
+										</div>
+										<div class="col-12 mt-3">
+											<button class="btn btn-outline-success w-100 mb-4" type="submit">Submit feedback</button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+  	{% endblock %}
