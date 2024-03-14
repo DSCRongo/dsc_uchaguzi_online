@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.views.static import serve
 
 
-admin.site.site_title = 'GDSC uchaguzi panel'
+admin.site.site_title = 'GDSC uchaguzi admin panel'
 admin.site.site_header = 'GDSC uchaguzi online'
 admin.site.index_title = 'Welcome back ...'
 
