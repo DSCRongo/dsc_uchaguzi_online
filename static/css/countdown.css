@@ -1,0 +1,116 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    background: #eeeeee;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
+}
+ 
+.back-to-top {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 15px;
+    bottom: 15px;
+    z-index: 996;
+    background: #13bb46;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    transition: all 0.4s;
+}
+
+.back-to-top i {
+    font-size: 28px;
+    color: #fff;
+    line-height: 0;
+}
+
+.back-to-top:hover {
+    background: #1d8f3f;
+    color: #fff;
+}
+
+.back-to-top.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+#header {
+    position: relative;
+    width: 100%;
+    padding: 100px 0;
+}
+
+#header h1 {
+    color: #13bb46;
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+}
+
+#header h2 {
+    margin-bottom: 40px;
+    font-size: 30px;
+}
+
+#header .countdown {
+    margin-bottom: 80px;
+}
+
+#header .countdown div {
+    text-align: center;
+    margin: 10px;
+    width: 100px;
+    padding: 15px 0;
+    background: #7e7d7d1f;
+    border-top: 5px solid #13bb46;
+}
+
+#header .countdown div h3 {
+    font-weight: 700;
+    font-size: 44px;
+    margin-bottom: 15px;
+}
+
+#header .countdown div h4 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+@media (max-width: 575px) {
+    #header .countdown div {
+        width: 70px;
+        padding: 10px 0;
+        margin: 10px 8px;
+    }
+
+    #header .countdown div h3 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    #header .countdown div h4 {
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+#footer {
+	padding: 20px 0;
+	font-size: 14px;
+	transition: all 0.3s;
+	border-top: 1px solid #cddfff;
+}
+
+#footer .copyright {
+	text-align: center;
+	color: #012970;
+}
