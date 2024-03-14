@@ -19,14 +19,14 @@
 					<div class="card">
 						<div class="card-body pt-3">
                             {% include 'toasts.html' %}
-                            <h5 class="card-title">Aspirants {{ elections_date.election_date|current_datetime }}</h5>
+                            <h5 class="card-title">Aspirants</h5>
                             {% if request.user.voter.has_voted is True %}
                             <div class="mt-3 text-center">
                                 <i class="bi-check-circle-fill" style="font-size: 100px; color: #13bb46; text-align: center;"></i>
                                 <p class="small text-muted fw-bold">You have voted. Results will posted once they are ready.</p>
                             </div>
                             {% else %}
-							{% if aspirants %}
+							{% if aspirants and elections_date.election_date|current_datetime %}
                             {% include 'core/partials/aspirants.html' %}
 							{% else %}
                             <div class="mt-3 text-center">
