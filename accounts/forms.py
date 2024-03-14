@@ -21,8 +21,7 @@ class VoterRegistrationForm(forms.ModelForm):
     )
     SELECT_SEMESTER = (
         (None, '-- Select semester --'),
-        ('1', '1'),
-        ('2', '2')
+        ('2', '2'),
     )
 
     school = forms.ChoiceField(widget=forms.Select(attrs={
