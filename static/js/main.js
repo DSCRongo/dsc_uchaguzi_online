@@ -93,14 +93,24 @@
 	const countDownDate = function() {
 		let timeleft = new Date(countdown.getAttribute('data-count')).getTime() - new Date().getTime();
 	
-		let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
-		let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) - 3;
-		let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
-		let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+		let days = Math.max(Math.floor(timeleft / (1000 * 60 * 60 * 24)), 0);
+		let hours = Math.max(Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) - 3, 0);
+		let minutes = Math.max(Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60)), 0);
+		let seconds = Math.max(Math.floor((timeleft % (1000 * 60)) / 1000), 0);
 	
 		countdown.innerHTML = output.replace('%d', days).replace('%h', hours).replace('%m', minutes).replace('%s', seconds);
+
+		// Check if the countdown has reached 0:0:00:00
+		if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
+			// Countdown has reached zero, display the message
+			countdown.innerHTML = "Voting is now open!";
+			clearInterval(interval);
+		} else {
+			// Update the countdown display
+			countdown.innerHTML = output.replace('%d', days).replace('%h', hours).replace('%m', minutes).replace('%s', seconds);
+		}
 	}
 	countDownDate();
-	setInterval(countDownDate, 1000);
+	const interval = setInterval(countDownDate, 1000);
 
 })();
