@@ -103,7 +103,7 @@
 		// Check if the countdown has reached 0:0:00:00
 		if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
 			// Countdown has reached zero, display the message
-			countdown.innerHTML = "Voting is now open!";
+			countdown.innerHTML = "Voting is now open! Refresh page to see changes.";
 			clearInterval(interval);
 		} else {
 			// Update the countdown display
