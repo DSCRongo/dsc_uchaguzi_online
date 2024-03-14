@@ -61,8 +61,9 @@ class VotingView(View):
     def get(self, request, voter_id, *args, **kwargs):
         current_year = timezone.datetime.now().year
         aspirant_qs = Aspirant.objects.filter(date_created__year=current_year)
+        get_elections_date = ElectionsDate.objects.filter(date_created__year=current_year).first()
 
-        context = {'aspirants': aspirant_qs}
+        context = {'aspirants': aspirant_qs, 'elections_date': get_elections_date}
         return render(request, self.template_name, context)
     
 
