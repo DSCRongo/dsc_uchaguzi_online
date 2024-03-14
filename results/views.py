@@ -28,6 +28,7 @@ class ElectionResultsView(View):
 
         # total votes garnered
         elected_aspirants = Aspirant.objects.filter(post__icontains='gdsc lead').values('name__voters_name__username', 'total_votes')
+        aspirants_qs = Aspirant.objects.all()
 
         context = {
             'MaleRegisteredVoters': male_voters,
@@ -38,6 +39,7 @@ class ElectionResultsView(View):
             'NegativeFeedback': negative_feedback,
             'NeutralFeedback': neutral_feedback,
             'ElectedAspirants': elected_aspirants,
+            'aspirants': aspirants_qs,
         }
         return render(request, self.template_name, context)
     
