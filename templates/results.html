@@ -40,6 +40,45 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="col-md-12 col-lg-12">
+					<div class="card overflow-auto">
+						<div class="card-body pb-0">
+							<h5 class="card-title"><i class="bi bi-trophy-fill"></i> Aspirants</h5>
+							
+							<div class="table-responsive">
+								<table class="table table-sm table-bordered table-condensed table-striped">
+									<thead>
+										<tr class="text-center table-active py-1">
+											<th scope="col">Image</th>
+											<th scope="col">Name</th>
+											<th scope="col">Gender</th>
+											<th scope="col">Post</th>
+											<th scope="col">Total Votes</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for aspirant in aspirants %}
+										{% if elections_date.is_done is True %}
+										<tr class="text-center">
+											<td><img src="{{ aspirant.aspirant_dp.url }}" alt="image" class="rounded-circle" height="45px" width="45px"></td>
+											<td>{{ aspirant.name }}</td>
+											<td>{{ aspirant.name.voters_name.gender|default:"--" }}</td>
+											<td>{{ aspirant.post }}</td>
+											<td class="fw-bold text-muted">{{ aspirant.total_votes }}</td>
+										</tr>
+										{% endif %}
+										{% empty %}
+										<tr class="text-center small">
+											<td colspan="5">No data available</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 	</main>
