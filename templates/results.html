@@ -1,0 +1,46 @@
+{% extends 'navbar.html' %}{% block title %}Election results{% endblock %}
+{% load static %}
+{% block content %}
+	<main id="main" class="main">
+		<section class="section">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Registered voters</h5>
+							<div id="votersDonutChart" style="min-height: 400px;" class="echart"></div>
+							<input type="hidden" id="males" value="{{ MaleRegisteredVoters }}">
+							<input type="hidden" id="females" value="{{ FemaleRegisteredVoters }}">
+							<script type="text/javascript" src="{% static 'js/charts/voters.js' %}"></script>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Voters turnout</h5>
+							<div id="turnoutDonutChart" style="min-height: 400px;" class="echart"></div>
+							<input type="hidden" id="registered-voters" value="{{ TotalRegisteredVoters }}">
+							<input type="hidden" id="casted-votes" value="{{ CastedVotes }}">
+							<script type="text/javascript" src="{% static 'js/charts/turnout.js' %}"></script>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">User feedback</h5>
+							<div id="feedbackDonutChart" style="min-height: 400px;" class="echart"></div>
+							<input type="hidden" id="positive-feedback" value="{{ PositiveFeedback }}">
+							<input type="hidden" id="negative-feedback" value="{{ NegativeFeedback }}">
+							<input type="hidden" id="neutral-feedback" value="{{ NeutralFeedback }}">
+							<script type="text/javascript" src="{% static 'js/charts/feedback.js' %}"></script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}
