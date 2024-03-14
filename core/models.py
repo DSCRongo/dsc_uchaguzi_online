@@ -25,7 +25,7 @@ class Aspirant(models.Model):
     def __str__(self):
         return f'{self.name}'
     
-
+    
     def save(self, *args, **kwargs):
         super(Aspirant, self).save(*args, **kwargs)
         dp = Image.open(self.aspirant_dp.path)
@@ -34,6 +34,10 @@ class Aspirant(models.Model):
             output_size = (320, 320)
             dp.thumbnail(output_size)
             dp.save(self.aspirant_dp.path)
+
+    def delete(self):
+        self.aspirant_dp.delete()
+        super(Aspirant, self).delete()
     
 
 class VotingRecord(models.Model):

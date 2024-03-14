@@ -134,6 +134,7 @@ else:
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR/'media'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -144,7 +145,6 @@ MESSAGE_TAGS = {
 }
 
 AUTH_USER_MODEL = 'accounts.user'
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

@@ -17,6 +17,6 @@ def generate_voter_recordID(sender, instance, **kwargs):
 
 
 @receiver(pre_save, sender=ElectionsDate)
-def generate_voter_recordID(sender, instance, **kwargs):
+def generate_elections_dateID(sender, instance, **kwargs):
     if instance.id == '':
         instance.id = str(uuid.uuid4().hex)[:25]
