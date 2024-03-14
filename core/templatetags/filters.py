@@ -26,7 +26,7 @@ def current_date_time(value):
     # In the if block check if the hour and minute in the current datetime (current_dt) is
     # greater than the hour and minute in elections_date
     # if the condition is True return True else False
-    if (current_dt.hour + 3 and current_dt.minute) >= (elections_date.hour and elections_date.minute):
+    if (current_dt.date() and (current_dt.hour + 3 and current_dt.minute)) >= (elections_date.date() and (elections_date.hour and elections_date.minute)):
         return True
     
     return False
