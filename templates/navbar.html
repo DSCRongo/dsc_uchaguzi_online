@@ -94,7 +94,7 @@
                         <i class="bi bi-mic-fill"></i><span>Feedback</span>
                     </a>
                 </li>
-                {% if election_is_over is True %}
+                {% if election_is_over.is_done is True %}
                 <li class="nav-item">
                     <a href="{% url 'election_results' request.user %}" class="nav-link">
                         <i class="bi bi-bar-chart-line-fill"></i><span>Results</span>
