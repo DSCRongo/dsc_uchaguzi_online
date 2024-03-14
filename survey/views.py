@@ -8,7 +8,7 @@ from .forms import FeedbackForm
 
 @method_decorator(login_required(login_url='login'), name='get')
 @method_decorator(user_passes_test(lambda user: user.is_superuser is False and user.is_staff is False), name='get')
-@method_decorator(user_passes_test(lambda user: user.voter.has_voted is False), name='get')
+@method_decorator(user_passes_test(lambda user: user.voter.has_voted is True), name='get')
 class SubmitFeedbackView(View):
     form_class = FeedbackForm
     template_name = 'survey/feedback.html'
