@@ -85,10 +85,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a hx-get="{% url 'cast_vote' request.user %}" hx-trigger="click"  hx-push-url="{% url 'cast_vote' request.user %}" hx-swap="outerHTML" hx-target="#wrapper" class="nav-link" target="_blank">
+                    <a hx-get="{% url 'cast_vote' request.user %}" hx-trigger="click"  hx-push-url="{% url 'cast_vote' request.user %}" hx-swap="outerHTML" hx-target="#wrapper" class="nav-link">
                         <i class="bi bi-bar-chart-line-fill"></i><span>Vote</span>
                     </a>
                 </li>
+                {% if request.user.voter.has_voted is True %}
+                <li class="nav-item">
+                    <a hx-get="{% url 'feedback' %}" hx-trigger="click"  hx-push-url="{% url 'feedback' %}" hx-swap="outerHTML" hx-target="#wrapper" class="nav-link">
+                        <i class="bi bi-mic-fill"></i><span>Feedback</span>
+                    </a>
+                </li>
+                {% endif %}
                 {% endif %}
                 <li><hr class="dropdown-divider"></li>
                 <li class="nav-heading text-white">Pages</li>
