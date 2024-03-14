@@ -1,6 +1,6 @@
 from django.contrib.auth.admin import UserAdmin
 from django.contrib import admin
-from .models import User
+from .models import User, Voter
 from .forms import ProfileForm
 
 
@@ -19,3 +19,8 @@ class AdminPanelUserDetailsLayout(UserAdmin):
     )
 
 admin.site.register(User, AdminPanelUserDetailsLayout)
+
+
+@admin.register(Voter)
+class VotersTable(admin.ModelAdmin):
+    list_display = ['voters_name', 'reg_no', 'school', 'year', 'semester', 'has_voted']
