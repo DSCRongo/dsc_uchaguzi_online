@@ -2,6 +2,8 @@
 
 
 # Overview
+![Screenshot from 2024-03-06 12-42-12](https://github.com/DSCRongo/dsc_uchaguzi_online/assets/78599959/5004c103-5bc4-4185-beda-38a94e8df25a)
+
 This is a website created to conduct annual elections in Google Developers Students Club (GDSC) Rongo University.
 
 ## Tech stack
@@ -42,7 +44,7 @@ Contribution guidelines for fixing bugs or assist in project development.
 1. Create a new git branch using command
     ```(bash)
     
-     $ git checkout -b <name-of-your-branch
+     $ git checkout -b <name-of-your-branch>
     
      ```
     **NOTE:** To avoid merging conflicts, please check that the name of your branch does not exist in this GitHub repo. For example, if you wish to create a branch named `feature` confirm that the name of the branch does not exist.
